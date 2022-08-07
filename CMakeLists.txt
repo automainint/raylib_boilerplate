@@ -32,9 +32,9 @@ add_executable(${RAYLIB_EXAMPLE})
 target_link_libraries(${RAYLIB_EXAMPLE} PRIVATE raylib)
 
 if(APPLE)
-  target_link_libraries(${RAYLIB_EXAMPLE} "-framework IOKit")
-  target_link_libraries(${RAYLIB_EXAMPLE} "-framework Cocoa")
-  target_link_libraries(${RAYLIB_EXAMPLE} "-framework OpenGL")
+  target_link_libraries(${RAYLIB_EXAMPLE} PRIVATE "-framework IOKit")
+  target_link_libraries(${RAYLIB_EXAMPLE} PRIVATE "-framework Cocoa")
+  target_link_libraries(${RAYLIB_EXAMPLE} PRIVATE "-framework OpenGL")
 endif()
 
 add_subdirectory(source)
