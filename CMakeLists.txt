@@ -23,13 +23,20 @@ if(NOT raylib_FOUND)
     raylib
     GIT_REPOSITORY https://github.com/raysan5/raylib.git
     GIT_TAG master)
-  set(OpenGL_GL_PREFERENCE GLVND)
+  if(UNIX AND NOT APPLE)
+    set(OpenGL_GL_PREFERENCE GLVND)
+  endif()
+  set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
   FetchContent_MakeAvailable(raylib)
 endif()
 
 add_executable(${RAYLIB_EXAMPLE})
 
 target_link_libraries(${RAYLIB_EXAMPLE} PRIVATE raylib)
+
+if(${PLATFORM} STREQUAL "Web")
+  set_target_properties(${RAYLIB_EXAMPLE} PROPERTIES SUFFIX ".html")
+endif()
 
 if(APPLE)
   target_link_libraries(${RAYLIB_EXAMPLE} PRIVATE "-framework IOKit")

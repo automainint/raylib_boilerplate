@@ -28,6 +28,11 @@ jobs:
         with:
           cmake-version: 3.18
 
+      - name: Install dependencies for Linux
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install -y --no-install-recommends libglfw3 libglfw3-dev libx11-dev libxcursor-dev libxrandr-dev libxinerama-dev libxi-dev libxext-dev libxfixes-dev
+
       - name: Install GCC 11
         if: runner.os == 'Linux'
         run: |
