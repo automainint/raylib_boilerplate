@@ -22,7 +22,7 @@ if(NOT raylib_FOUND)
   FetchContent_Declare(
     raylib
     GIT_REPOSITORY https://github.com/raysan5/raylib.git
-    GIT_TAG 4.0.0)
+    GIT_TAG master)
   if(UNIX AND NOT APPLE)
     set(OpenGL_GL_PREFERENCE GLVND)
   endif()
